@@ -1,0 +1,91 @@
+node liri.js: my-tweets
+node liri.js: spotify-this-song 
+node liri.js: spotify-this-song hi
+node liri.js: spotify-this-song hi
+node liri.js: spotify-this-song hi
+node liri.js: my-tweets
+node liri.js: spotify-this-song yo
+node liri.js: spotify-this-song yo
+node liri.js: spotify-this-song yo
+node liri.js: movie-this
+node liri.js: movie-this hi
+node liri.js: spotify-this-song yo
+node liri.js: my-tweets
+node liri.js: my-tweets
+node liri.js: my-tweets
+node liri.js: movie-this hi
+node liri.js: spotify-this-song yo
+node liri.js: spotify-this-song yo
+node liri.js: spotify-this-song yo
+node liri.js: spotify-this-song yo
+node liri.js: spotify-this-song yo
+node liri.js: spotify-this-song yo
+node liri.js: spotify-this-song yo
+node liri.js: spotify-this-song yo
+node liri.js: spotify-this-song yo
+node liri.js: spotify-this-song hello
+node liri.js: movie-this hi
+node liri.js: spotify-this-song hello
+User Command: node liri.js spotify-this-song hello
+
+node liri.js: spotify-this-song hello
+node liri.js: spotify-this-song hello
+node liri.js: spotify-this-song hello
+node liri.js: spotify-this-song hello
+node liri.js: spotify-this-song hello
+node liri.js: spotify-this-song hello
+node liri.js: spotify-this-song hello
+node liri.js: spotify-this-song hello
+node liri.js: spotify-this-song hello
+node liri.js: 
+node liri.js: 
+node liri.js: spotify-this-song
+node liri.js: my-tweets
+Argument: my-tweets. Movie or Song Title: undefined. Movie or Song info: undefined.Argument: spotify-this-song. Movie or Song Title: undefined. Movie or Song info: undefined.Argument: spotify-this-song. Movie or Song Title: hello. Movie or Song info: undefined.Argument: spotify-this-song. Movie or Song Title: undefined. Movie or Song info: undefined.Argument: spotify-this-song. Movie or Song Title: undefined. Movie or Song info: undefined.node liri.js: spotify-this-song
+node liri.js: spotify-this-song hi
+node liri.js: spotify-this-song hi
+node liri.js: spotify-this-song hi
+node liri.js: spotify-this-song hi
+node liri.js: spotify-this-song  hi
+node liri.js: spotify-this-song  hi
+node liri.js: spotify-this
+node liri.js: spotify-this-song
+node liri.js: movie-this
+node liri.js: do-what-it-says
+node liri.js: do-what-it-says
+node liri.js: movie-this
+node liri.js: my-tweets
+node liri.js: my-tweets
+node liri.js: my-tweets
+node liri.js: spotify-this-song
+node liri.js: spotify-this-song
+node liri.js: spotify-this-song
+node liri.js: spotify-this-song
+node liri.js: spotify-this-song
+node liri.js: spotify-this-song
+node liri.js: spotify-this-song
+node liri.js: spotify-this-song
+node liri.js: spotify-this-song
+node liri.js: spotify-this-song
+node liri.js: spotify-this-song
+node liri.js: spotify-this-song
+node liri.js: spotify-this-song
+node liri.js: spotify-this-song
+Argument: spotify-this-song. Movie or Song Title: undefined. Movie or Song info: undefined.node liri.js: movie-this
+node liri.js: movie-this
+node liri.js: spotify-this-song
+node liri.js: spotify-this-song
+node liri.js: spotify-this-song
+node liri.js: spotify-this-song
+node liri.js: movie-this
+node liri.js: movie-this
+node liri.js: spotify-this-song
+node liri.js: spotify-this-song
+node liri.js: spotify-this-song
+node liri.js: my-tweets
+node liri.js: spotify-this-song
+node liri.js: spotify-this-song
+node liri.js: spotify-this-song
+node liri.js: spotify-this-song
+node liri.js: spotify-this-song
+node liri.js: spotify-this-song
