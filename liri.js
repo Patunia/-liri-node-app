@@ -4,55 +4,67 @@
     // movie-this
     // do-what-it-says
 
-// DESIGN\
 require("dotenv").config();
 
 var keys = require("./keys.js");
 var Twitter = require('twitter');
 var spotify = require("spotify");
+
 var request = require("request");
 var fs = require('fs');
 
-var cmdInput = process.argv[2];
+var yourWords = process.argv[2];
+//var userSong = process.argv[3];
+//getInput(yourWords);
 
+// function logResults(result){
+// 	fs.appendFile('./log.txt', result, function (err) {
+// 	  if (err) throw err;
+// 	});
+// }
 
-getInput(cmdInput);
-
-function getInput(cmdInput, args) {
+// function getInput(yourWords, args) {
     if (logged()) {
-        switch (cmdInput) {
+    switch (yourWords) {
         case 'my-tweets':
             myTweets();
             break;
         case 'spotify-this-song':
-            if (args) {
-                console.log(' Argument passed: ' + args);
-                spotifySong(args);
-            }
-            else {
-                if (process.argv[3] != null) {
-                    var song = process.argv.slice(3).join('+');
-                    spotifySong(song);
-                }
-                else {
-                    spotifySong('I Like It');
-                }
-            }
+            //if (args) {
+            //     console.log(' Argument passed: ' + args);
+            //     spotifyThis(args);
+            // }
+            // else {
+            //     if (process.argv[3] != null) {
+            //         var song = process.argv.slice(3).join('+');
+            spotifyThis();
+            //     }
+            //     else {
+            //         spotifyThis('I Like It');
+            //     }
+            // }
             break;
         case 'movie-this':
-            if (args) {
-                myMovieDetails(args);
-            }
-            else {
-                var movie = process.argv.slice(3).join('+');
-                myMovieDetails(movie);
-            }
+            // if (args) {
+            //     movieThis(args);
+            // }
+            // else {
+            //     var movie = process.argv.slice(3).join('+');
+            movieThis();
+            //}
             break;
         case 'do-what-it-says':
-            runCommand();
+            rando();
             break;
+        default:
+            console.log("\r\n" +"OOPSIES... Please use one of the following commands: " +"\r\n"+
+			"  node liri.js my-tweets " +"\r\n"+
+			"  node liri.js spotify-this-song 'song title' "+"\r\n"+
+			"  node liri.js movie-this 'movie title' "+"\r\n"+
+			"  node liri.js do-what-it-says"+"\r\n"+
+			"Pro tip: use QUOTES when a song or movie is multiple words!");
         }
-    }
+    //}
 }
 
 // all of the code for my-tweets goes here
@@ -79,40 +91,54 @@ function myTweets() {
     });
 }
 
-// all of the spotify code will go here
-function spotifySong() {
+// spotify
+function spotifyThis() {
     spotify.search({
         type: 'track',
-        query: 'song'
+        query: ""
     }, function (err, data) {
         if (err) {
-            console.log('Error occurred: ' + err);
+        console.log('Error: ' + err);
         return;
     }
         else {
-                console.log('');
-                console.log('_______________________________________________________');
-                console.log('Artist: ' + data.tracks.items[0].album.artists[0].name);
-                console.log('Song Name: ' + data.tracks.items[0].name);
-                console.log('Album Name: ' + data.tracks.items[0].album.name);
-                console.log('Preview URL: ' + data.tracks.items[0].preview_url);
-                console.log('_______________________________________________________');
-                console.log('');
+            console.log('');
+            console.log('_______________________________________________________');
+            console.log('Artist: ' + data.tracks.items[0].album.artists[0].name);
+            console.log('Song Name: ' + data.tracks.items[0].name);
+            console.log('Album Name: ' + data.tracks.items[0].album.name);
+            console.log('Check it out: ' + data.tracks.items[0].preview_url);
+            console.log('_______________________________________________________');
+            console.log('');
+
+            // logResults('');
+            // logResults('_______________________________________________________');
+            // logResults('Artist: ' + data.tracks.items[0].album.artists[0].name);
+            // logResults('Song Name: ' + data.tracks.items[0].name);
+            // logResults('Album Name: ' + data.tracks.items[0].album.name);
+            // logResults('Check it out: ' + data.tracks.items[0].preview_url);
+            // logResults('_______________________________________________________');
+            // logResults('');
         }
     });
 }
 
-// all of the movie-this code goes here
-function myMovieDetails(movie) {
-    var query = 'http://www.omdbapi.com/?t=' + movie + '&plot=short&r=json&tomatoes=true';
-    request(query, function (error, response, body) {
+// movie-this
+function movieThis() {
+        var movie = process.argv[3];
+		if(!movie){
+			movie = "Super Troopers";
+		}
+        params = movie;
+		//request("http://www.omdbapi.com/?t=" + params + "&y=&plot=short&r=json&tomatoes=true", function (error, response, body) {
+        var query = 'http://www.omdbapi.com/?t=' + "params" + '&plot=short&r=json&tomatoes=true';
+        request(query, function (error, response, body) {
         if (!error && response.statusCode == 200) {
-            var movieDetails = JSON.parse(body);
             // if no movie entered use below movieDetails for movie
-            if (movieDetails.Response === 'False') {
-                myMovieDetails('Super Troopers');
-            }
-            else {
+            // if (movieDetails.Response === 'False') {
+            //     movieThis('Super Troopers');
+            // }
+            //else {
                 // sends data to console
                 console.log('');
                 console.log('_______________________________________________________');
@@ -123,26 +149,46 @@ function myMovieDetails(movie) {
                 console.log(" Rotten Tomatoes Rating: " + JSON.parse(body).tomatoRating);
                 console.log(" Country: " + JSON.parse(body).country);
                 console.log(" Language: " + JSON.parse(body).language);
-                console.log(" Plot: " + JSON.parse(body).plot);
-                console.log('_______________________________________________________');
-                console.log('');
-            }
-        }
-    });
+                // logged(" Plot: " + JSON.parse(body).plot);
+                // logged('_______________________________________________________');
+                // logged('');
+                // logged('');
+                // logged('_______________________________________________________');
+                // logged(" Title: " + JSON.parse(body).title);
+                // logged(" Release Year: " + JSON.parse(body).released);
+                // logged(" Actors: " + JSON.parse(body).actors);
+                // logged(" IMDB Rating: " + JSON.parse(body).imdbRating);
+                // logged(" Rotten Tomatoes Rating: " + JSON.parse(body).tomatoRating);
+                // logged(" Country: " + JSON.parse(body).country);
+                // logged(" Language: " + JSON.parse(body).language);
+                // logged(" Plot: " + JSON.parse(body).plot);
+                // logged('_______________________________________________________');
+                // logged('');
+        } else {
+				console.log('Error: ' + error);
+				return;
+			}
+        // }
+   });
 }
 
-function runCommand() {
+function rando() {
     fs.readFile('random.txt', 'utf-8', function (error, data) {
-        var fileCommands = data.split(',');
-        getInput(fileCommands[0], fileCommands[1]);
+        if (!error) {
+            randoResults = data.split(",");
+            spotifyThisSong(randoResults[0], randoResults[1]);
+        } else {
+            console.log("Error: " + error);
+        }var fileCommands = data.split(',');
+        //getInput(fileCommands[0], fileCommands[1]);
     });
 }
 
 function logged() {
     // captures all command line inputs
     var inputs = process.argv.slice(2).join(" ");
-    // feeeds the  data to the log file
-    // console.log(inputs);
+    // feeds the  data to the log file
+    console.log(inputs);
     // appends data to the log file after each run
     fs.appendFile("log.txt", "node liri.js: " + inputs + "\n", function (error) {
         if (error) {
@@ -152,5 +198,5 @@ function logged() {
             console.log(" Updated log! ");
         }
     });
-    return true;
+    // return true;
 }
